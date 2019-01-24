@@ -15,7 +15,7 @@ import io.vertx.ext.web.codec.BodyCodec;
 
 public class RecommendationVerticle extends AbstractVerticle {
 
-    private static final String RESPONSE_STRING_FORMAT = "recommendation v2 from '%s': %d\n";
+    private static final String RESPONSE_STRING_FORMAT = "recommendation v3 from '%s': %d\n";
     private static final String HTTP_NOW = "now.httpbin.org";
 
     private static final String HOSTNAME = parseContainerIdFromHostname(
@@ -48,7 +48,7 @@ public class RecommendationVerticle extends AbstractVerticle {
         //      router.get("/").handler(this::timeout);
         router.get("/").handler(this::logging);
         router.get("/").handler(this::getRecommendations);
-        //        router.get("/").handler(this::getNow);
+                router.get("/").handler(this::getNow);
         router.get("/misbehave").handler(this::misbehave);
         router.get("/behave").handler(this::behave);
         
